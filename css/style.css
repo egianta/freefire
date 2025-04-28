@@ -429,8 +429,6 @@ body {
 	border: 2px solid #fff;
 	position: relative;
 	outline: none;
-	-webkit-appearance: none;
-    -moz-appearance: none;
 }
 .popup-form input::placeholder {
 	color: #fff;
@@ -453,7 +451,6 @@ body {
 	border: 2px solid #000;
 	position: relative;
 	outline: none;
-	-webkit-appearance: none;-moz-appearance: none;
 }
 .popup-footer {
     background:url(../img/popup-footer.png) no-repeat center center;
